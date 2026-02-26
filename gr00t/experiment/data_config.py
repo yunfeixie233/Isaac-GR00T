@@ -879,6 +879,23 @@ class AgibotGenie1DataConfig:
 
 ###########################################################################################
 
+
+class FractalDataConfig(So100DataConfig):
+    video_keys = ["video.image"]
+    state_keys = ["state.x", "state.y", "state.z", "state.rx", "state.ry", "state.rz", "state.rw", "state.gripper"]
+    action_keys = ["action.x", "action.y", "action.z", "action.roll", "action.pitch", "action.yaw", "action.gripper"]
+    language_keys = ["annotation.human.action.task_description"]
+
+
+class BridgeDataConfig(FractalDataConfig):
+    video_keys = ["video.image_0"]
+    state_keys = ["state.x", "state.y", "state.z", "state.roll", "state.pitch", "state.yaw", "state.pad", "state.gripper"]
+    action_keys = ["action.x", "action.y", "action.z", "action.roll", "action.pitch", "action.yaw", "action.gripper"]
+    language_keys = ["annotation.human.action.task_description"]
+
+
+###########################################################################################
+
 DATA_CONFIG_MAP = {
     "fourier_gr1_arms_waist": FourierGr1ArmsWaistDataConfig(),
     "fourier_gr1_arms_only": FourierGr1ArmsOnlyDataConfig(),
@@ -892,4 +909,6 @@ DATA_CONFIG_MAP = {
     "unitree_g1_full_body": UnitreeG1FullBodyDataConfig(),
     "oxe_droid": OxeDroidDataConfig(),
     "agibot_genie1": AgibotGenie1DataConfig(),
+    "fractal": FractalDataConfig(),
+    "bridge": BridgeDataConfig(),
 }
