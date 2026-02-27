@@ -834,9 +834,10 @@ class Eagle2_5_VLProcessor(ProcessorMixin):
         # if "auto_map" in processor_dict:
         #    del processor_dict["auto_map"]
 
-        unused_kwargs = cls.validate_init_kwargs(
+        _validate_result = cls.validate_init_kwargs(
             processor_config=processor_dict, valid_kwargs=cls.valid_kwargs
         )
+        unused_kwargs = _validate_result[0] if isinstance(_validate_result, tuple) else _validate_result
         processor = cls(*args, **processor_dict)
 
         # Update processor with kwargs if needed
